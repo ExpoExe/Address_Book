@@ -1,0 +1,28 @@
+/*
+Global
+*/
+body{
+    font-size: 14px;
+    background: #f3f3f3;
+}
+
+/*
+Header
+*/
+.row .add-button{
+    margin: 10px 0 10px 0;
+    float: right;
+}
+
+
+/*
+Body
+*/
+ul li{
+    list-style: none;
+}
+
+
+/*
+Footer
+*/
