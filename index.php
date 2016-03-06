@@ -2,9 +2,41 @@
 /**
  * Created by PhpStorm.
  * User: Justin_NZXT
- * Date: 3/2/2016
+ * Date: 3/4/2016
  * Time: 4:51 PM
+ * TECH ASSESSMENT
+ * Please solve the test task described below and send us all the sources back together with the sql files that need to be executed to test it.
+
+Write a small web-based application using php+html+css+javascript+mysql which maintains an address book that
+stores name, email, address, home phone, work phone, birth date, and a comment field.
+
+Requirements:
+- Only the initial page may get html&css content from the server
+- No operation may result a complete page reload after being initially loaded
+- Every communication with the server must be done thru ajax calls
+- No html over ajax calls, only json ( => content generation by js)
+- OOP both in php and js is required
+- No formatting by html, only by css
+- The app must be able to run in any folder inside the web area, must not restrict to be placed in the root
+
+Allowed 3rd party tools:
+- jQuery, Sencha/ExtJS, Laravel
+
+Good if:
+- Uploading a photo for every contact is possible and is displayed
+- Search feature added
+- Practical db organizing
+- Data validation+sanitization at both client and server side
+- Using only prepared statements (PDO preferred)
+- Database communication thru a db class instead of direct mysql* calls
+- Nice, ergonomic, logical gui
+- Pure json communication between browser and server back and forth
+- You provide an online instance of the running application which can remain online for a few weeks, for easier testing
+- Add as much security as you can
  */
+
+//Include array of states to make form easier
+include('core/init.php');
 
 ?>
 
@@ -27,138 +59,92 @@
                 <h1>PHP Address Book</h1>
             </div>
             <div class="large-6 columns right">
-                <a data-open="addContact" class="add-button button right large">Add Contact</a>
-
+                <a data-open="addContactModal" class="add-button button right large">Add Contact</a>
                 <!-- Add Contact Modal -->
-                <div class="large reveal" id="addContact" data-reveal>
+                <div class="large reveal" id="addContactModal" data-reveal>
                     <h2 class="text-center">Add Contact</h2>
-                    <form>
+                    <form id="addContactForm" action="#" method="post"> <!-- COME BACK AND ADD ABIDE VALIDATION -->
 
                         <div class="row">
                             <div class="large-6 columns">
                                 <label>
-                                First Name <input type="text" placeholder="Enter First Name" />
+                                First Name <input name="first_name" type="text" placeholder="Enter First Name" />
                                 </label>
                             </div>
                             <div class="large-6 columns">
                                 <label>
-                                Last Name <input type="text" placeholder="Enter Last Name" />
+                                Last Name <input name="last_name" type="text" placeholder="Enter Last Name" />
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-4 columns">
                                 <label>
-                                Email <input type="email" placeholder="Enter Email" />
+                                Email <input name="email" type="email" placeholder="Enter Email" />
                                 </label>
                             </div>
                             <div class="large-4 columns">
                                 <label>
-                                Home Phone Number <input type="text" placeholder="Enter Home Phone" />
+                                Home Phone Number <input name="home_phone" type="text" placeholder="Enter Home Phone" />
                                 </label>
                             </div>
                             <div class="large-4 columns">
                                 <label>
-                                Work Phone Number <input type="text" placeholder="Enter Work Phone" />
+                                Work Phone Number <input name="work_phone" type="text" placeholder="Enter Work Phone" />
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-6 columns">
                                 <label>
-                                Address 1 <input type="text" placeholder="Enter Address 1" />
+                                Address 1 <input name="address1" type="text" placeholder="Enter Address 1" />
                                 </label>
                             </div>
                             <div class="large-6 columns">
                                 <label>
-                                Address 2 <input type="text" placeholder="Enter Address 2" />
+                                Address 2 <input name="address2" type="text" placeholder="Enter Address 2" />
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-4 columns">
                                 <label>
-                                City <input type="text" placeholder="Enter City" />
+                                City <input name="city" type="text" placeholder="Enter City" />
                                 </label>
                             </div>
                             <div class="large-4 columns">
                                 <label>
                                 State
-                                    <select>
-                                        <option value="AL">Alabama</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="AZ">Arizona</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="CA">California</option>
-                                        <option value="CO">Colorado</option>
-                                        <option value="CT">Connecticut</option>
-                                        <option value="DE">Delaware</option>
-                                        <option value="DC">District Of Columbia</option>
-                                        <option value="FL">Florida</option>
-                                        <option value="GA">Georgia</option>
-                                        <option value="HI">Hawaii</option>
-                                        <option value="ID">Idaho</option>
-                                        <option value="IL">Illinois</option>
-                                        <option value="IN">Indiana</option>
-                                        <option value="IA">Iowa</option>
-                                        <option value="KS">Kansas</option>
-                                        <option value="KY">Kentucky</option>
-                                        <option value="LA">Louisiana</option>
-                                        <option value="ME">Maine</option>
-                                        <option value="MD">Maryland</option>
-                                        <option value="MA">Massachusetts</option>
-                                        <option value="MI">Michigan</option>
-                                        <option value="MN">Minnesota</option>
-                                        <option value="MS">Mississippi</option>
-                                        <option value="MO">Missouri</option>
-                                        <option value="MT">Montana</option>
-                                        <option value="NE">Nebraska</option>
-                                        <option value="NV">Nevada</option>
-                                        <option value="NH">New Hampshire</option>
-                                        <option value="NJ">New Jersey</option>
-                                        <option value="NM">New Mexico</option>
-                                        <option value="NY">New York</option>
-                                        <option value="NC">North Carolina</option>
-                                        <option value="ND">North Dakota</option>
-                                        <option value="OH">Ohio</option>
-                                        <option value="OK">Oklahoma</option>
-                                        <option value="OR">Oregon</option>
-                                        <option value="PA">Pennsylvania</option>
-                                        <option value="RI">Rhode Island</option>
-                                        <option value="SC">South Carolina</option>
-                                        <option value="SD">South Dakota</option>
-                                        <option value="TN">Tennessee</option>
-                                        <option value="TX">Texas</option>
-                                        <option value="UT">Utah</option>
-                                        <option value="VT">Vermont</option>
-                                        <option value="VA">Virginia</option>
-                                        <option value="WA">Washington</option>
-                                        <option value="WV">West Virginia</option>
-                                        <option value="WI">Wisconsin</option>
-                                        <option value="WY">Wyoming</option>
+                                    <select name="state">
+                                        <?php
+                                        echo '<option>Select a State</option>';
+                                        foreach ( $states as $value => $label ) :
+                                            echo '<option value="' . $value . '" >' . $label . '</option>';
+                                        endforeach;
+                                        ?>
                                     </select>
                                 </label>
                             </div>
                             <div class="large-4 columns">
                                 <label>
-                                Zipcode <input type="text" placeholder="Enter Work Phone" />
+                                Zipcode <input name="zipcode" type="text" placeholder="Enter Zipcode" />
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-4 columns">
                                 <label>
-                                Date of Birth <input type="text" placeholder="Enter Date of Birth" />
+                                Date of Birth <input name="dob" type="text" placeholder="YYYY-MM-DD" />
                                 </label>
                             </div>
                             <div class="large-8 columns">
                                 <label>
-                                Comments <textarea type="text" placeholder="Enter Comments..."></textarea>
+                                Comments <textarea name="comments" type="text" placeholder="Enter Comments..."></textarea>
                                 </label>
                             </div>
                         </div>
 
-                        <input type="submit" class="add-button button center small" value="Add" />
+                        <input name="submit" type="submit" class="add-button button small" value="Add" />
                     </form>
                     <button class="close-button" data-close aria-label="Close" type="button">
                         <span aria-hidden="true">&times;</span>

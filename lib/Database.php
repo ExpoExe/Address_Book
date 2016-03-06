@@ -3,7 +3,7 @@
 /**
  * Created by PhpStorm.
  * User: Justin_NZXT
- * Date: 3/2/2016
+ * Date: 3/4/2016
  * Time: 4:54 PM
  */
 class Database{
@@ -25,7 +25,7 @@ class Database{
             PDO::ATTR_PERSISTENT    => true,
             PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION
         );
-        // Create a new PDO instanace
+        // Create a new PDO instance
         try{
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
         }
@@ -64,12 +64,12 @@ class Database{
 
     public function resultset(){
         $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->stmt->fetchAll(PDO::FETCH_CLASS);
     }
 
     public function single(){
         $this->execute();
-        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->stmt->fetch(PDO::FETCH_CLASS);
     }
 
     public function rowCount(){

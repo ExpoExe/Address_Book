@@ -9,7 +9,7 @@ body{
 /*
 Header
 */
-.row .add-button{
+.row .add-button, form .add-button, form .edit-button{
     margin: 10px 0 10px 0;
     float: right;
 }
@@ -22,6 +22,11 @@ ul li{
     list-style: none;
 }
 
+.success.button.small, .alert.button.small{
+    min-width: 75px;
+    margin: 0;
+}
+
 #loaderImg{
     display: none;
     position: absolute;
@@ -29,6 +34,10 @@ ul li{
     left: 50%;
     width: 100px;
     margin: 50px auto;
+}
+
+.editContactModal{
+    display: block;
 }
 
 

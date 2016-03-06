@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: Justin_NZXT
- * Date: 3/2/2016
+ * Date: 3/4/2016
  * Time: 4:52 PM
  */
 
@@ -10,7 +10,7 @@
 require_once('config/config.php');
 
 //Includes
-require_once('inc/helper.php');
+require_once('inc/vars.php');
 
 //Autoload
 function __autoload($class_name){
