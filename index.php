@@ -4,35 +4,35 @@
  * User: Justin_NZXT
  * Date: 3/4/2016
  * Time: 4:51 PM
- * TECH ASSESSMENT
+ * ASSESSMENT
  * Please solve the test task described below and send us all the sources back together with the sql files that need to be executed to test it.
 
 Write a small web-based application using php+html+css+javascript+mysql which maintains an address book that
 stores name, email, address, home phone, work phone, birth date, and a comment field.
 
 Requirements:
-- Only the initial page may get html&css content from the server
-- No operation may result a complete page reload after being initially loaded
-- Every communication with the server must be done thru ajax calls
-- No html over ajax calls, only json ( => content generation by js)
-- OOP both in php and js is required
-- No formatting by html, only by css
-- The app must be able to run in any folder inside the web area, must not restrict to be placed in the root
+- Only the initial page may get html&css content from the server                                                        ✓
+- No operation may result a complete page reload after being initially loaded                                           ✓
+- Every communication with the server must be done thru ajax calls                                                      ✓
+- No html over ajax calls, only json ( => content generation by js)                                                     ✓
+- OOP both in php and js is required                                                                                    ✓
+- No formatting by html, only by css                                                                                    ✓
+- The app must be able to run in any folder inside the web area, must not restrict to be placed in the root             ✓
 
 Allowed 3rd party tools:
 - jQuery, Sencha/ExtJS, Laravel
 
 Good if:
-- Uploading a photo for every contact is possible and is displayed
-- Search feature added
-- Practical db organizing
-- Data validation+sanitization at both client and server side
-- Using only prepared statements (PDO preferred)
-- Database communication thru a db class instead of direct mysql* calls
-- Nice, ergonomic, logical gui
-- Pure json communication between browser and server back and forth
-- You provide an online instance of the running application which can remain online for a few weeks, for easier testing
-- Add as much security as you can
+- Uploading a photo for every contact is possible and is displayed                                                      X
+- Search feature added                                                                                                  X
+- Practical db organizing                                                                                               ✓
+- Data validation+sanitization at both client and server side                                                           ✓
+- Using only prepared statements (PDO preferred)                                                                        ✓
+- Database communication thru a db class instead of direct mysql* calls                                                 ✓
+- Nice, ergonomic, logical gui                                                                                          ✓
+- Pure json communication between browser and server back and forth                                                     X
+- You provide an online instance of the running application which can remain online for a few weeks, for easier testing ✓
+- Add as much security as you can                                                                                       ✓
  */
 
 //Include array of states to make form easier
@@ -56,14 +56,14 @@ include('core/init.php');
         <!-- Header Start -->
         <div class="row">
             <div class="large-6 columns">
-                <h1>PHP Address Book</h1>
+                <h1>Address Book</h1>
             </div>
             <div class="large-6 columns right">
                 <a data-open="addContactModal" class="add-button button right large">Add Contact</a>
                 <!-- Add Contact Modal -->
                 <div class="large reveal" id="addContactModal" data-reveal>
                     <h2 class="text-center">Add Contact</h2>
-                    <form id="addContactForm" action="#" method="post"> <!-- COME BACK AND ADD ABIDE VALIDATION -->
+                    <form id="addContactForm" action="#" method="post" enctype= "multipart/form-data">
 
                         <div class="row">
                             <div class="large-6 columns">
@@ -85,12 +85,12 @@ include('core/init.php');
                             </div>
                             <div class="large-4 columns">
                                 <label>
-                                Home Phone Number <input name="home_phone" type="text" placeholder="Enter Home Phone" />
+                                Home Phone Number <input name="home_phone" type="number" placeholder="Enter Home Phone" />
                                 </label>
                             </div>
                             <div class="large-4 columns">
                                 <label>
-                                Work Phone Number <input name="work_phone" type="text" placeholder="Enter Work Phone" />
+                                Work Phone Number <input name="work_phone" type="number" placeholder="Enter Work Phone" />
                                 </label>
                             </div>
                         </div>
@@ -165,7 +165,6 @@ include('core/init.php');
         <!-- Table End -->
 
         <script src="js/vendor/jquery.min.js"></script>
-        <script src="js/vendor/what-input.min.js"></script>
         <script src="js/foundation.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/script.js"></script>

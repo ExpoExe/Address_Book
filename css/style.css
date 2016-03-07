@@ -3,13 +3,12 @@ Global
 */
 body{
     font-size: 14px;
-    background: #f3f3f3;
 }
 
 /*
 Header
 */
-.row .add-button, form .add-button, form .edit-button{
+.row .add-button, form .add-button {
     margin: 10px 0 10px 0;
     float: right;
 }
@@ -34,10 +33,6 @@ ul li{
     left: 50%;
     width: 100px;
     margin: 50px auto;
-}
-
-.editContactModal{
-    display: block;
 }
 
 
