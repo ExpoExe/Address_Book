@@ -35,8 +35,31 @@ $(document).ready(function(){
         return false;
     });
 
-});
+    //Search functions
 
+    $('#searchbar').keyup(function(){
+        $('#displaySearch').slideToggle('fast');
+
+        var value = $(this).val()
+
+        $.ajax({
+            type: 'GET',
+            url: 'search.php',
+            data: 'q='+value,
+            dataType: 'json',
+            success: function(resp){
+                console.log('AJAX success');
+                $('#displaySearch').html(resp);
+            }
+        });
+
+    });
+
+    $('#searchbar').focusout(function(){
+        $('#displaySearch').slideToggle('slow');
+    });
+
+});
 
 //Load contacts for easy partial refresh
 function showContacts() {

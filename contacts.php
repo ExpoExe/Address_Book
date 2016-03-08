@@ -12,10 +12,25 @@ include('core/init.php');
 $db = new Database;
 
 //create table for fresh start
-$db->query("CREATE TABLE IF NOT EXISTS `contacts` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `first_name` VARCHAR(100) NOT NULL,
-`last_name` VARCHAR(100) NOT NULL, `email` VARCHAR(100) NOT NULL, `home_phone` VARCHAR(50) NOT NULL, `work_phone` VARCHAR(50) NOT NULL, `address1` VARCHAR(100) NOT NULL,
- `address2` VARCHAR(100) NOT NULL, `city` VARCHAR(100) NOT NULL, `state` VARCHAR(50) NOT NULL, `zipcode` INT(30) NOT NULL, `dob` DATE NOT NULL,
-  `comments` TEXT NOT NULL, `date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)");
+$db->query("CREATE TABLE IF NOT EXISTS `contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `home_phone` varchar(50) NOT NULL,
+  `work_phone` varchar(50) NOT NULL,
+  `address1` varchar(100) NOT NULL,
+  `address2` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `zipcode` int(30) NOT NULL,
+  `dob` date NOT NULL,
+  `comments` text NOT NULL,
+  `img_name` varchar(50) NOT NULL,
+  `img_data` blob NOT NULL,
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;");
 
 $db->execute();
 
@@ -43,7 +58,7 @@ $contacts = $db->resultset();
 
             <tbody>
             <?php foreach($contacts as $contact) : ?>
-                <tr>
+                <tr id="contactID<?php echo $contact->id ?>">
                     <td><?php echo $contact->first_name.' '.$contact->last_name; ?></td>
                     <td><?php echo $contact->email ?></td>
                     <td><ul>

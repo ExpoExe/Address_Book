@@ -55,10 +55,14 @@ include('core/init.php');
 
         <!-- Header Start -->
         <div class="row">
-            <div class="large-6 columns">
+            <div class="large-4 columns">
                 <h1>Address Book</h1>
             </div>
-            <div class="large-6 columns right">
+            <div class="large-4 columns">
+                Search by name:<input type="search" name="searchbar" id="searchbar">
+                <div id="displaySearch"></div>
+            </div>
+            <div class="large-4 columns right">
                 <a data-open="addContactModal" class="add-button button right large">Add Contact</a>
                 <!-- Add Contact Modal -->
                 <div class="large reveal" id="addContactModal" data-reveal>

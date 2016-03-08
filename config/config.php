@@ -6,7 +6,7 @@
  * Time: 4:52 PM
  */
 //DB PARAMS
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'addressbook');
+define('DB_HOST', '155.254.18.31');
+define('DB_USER', 'justinri_test');
+define('DB_PASS', 'PHPaddress');
+define('DB_NAME', 'justinri_addressbook');
